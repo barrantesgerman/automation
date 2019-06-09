@@ -9,11 +9,11 @@ public class DashBoardPage extends DashBoardLocators {
         super(driver);
     }
 
-    public boolean isChangePasswordDisplayed(){
+    public boolean isChangePasswordDisplayed() {
         return this.getBot().isElementDisplayed(this.changePasswordElement);
     }
 
-    public boolean isLogOutDisplayed(){
+    public boolean isLogOutDisplayed() {
         return this.getBot().isElementDisplayed(this.logOutElementElement);
     }
 }

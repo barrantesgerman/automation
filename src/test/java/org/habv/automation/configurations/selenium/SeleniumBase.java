@@ -9,6 +9,7 @@ import org.openqa.selenium.remote.BrowserType;
 import java.util.concurrent.TimeUnit;
 
 public class SeleniumBase {
+
     private WebDriver driver;
 
     /**
@@ -34,7 +35,7 @@ public class SeleniumBase {
         driver.manage().deleteAllCookies();
         try {
             driver.manage().window().maximize();
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.print("No se pudo maximizar el browser");
         }
 
@@ -46,28 +47,28 @@ public class SeleniumBase {
     /**
      * This method closes the driver/browser
      */
-    public void tearDown(){
+    public void tearDown() {
         driver.quit();
     }
 
     /**
      * This method creates an instance of chrome driver -- open chrome
      */
-    private void initChrome(){
+    private void initChrome() {
         this.driver = new ChromeDriver();
     }
 
     /**
      * This method creates an instance of internet explorer driver -- open IE
      */
-    private void initIE(){
+    private void initIE() {
         this.driver = new InternetExplorerDriver();
     }
 
     /**
      * This method creates an instance of firefox driver -- open firefox
      */
-    private void initFireFox(){
+    private void initFireFox() {
         this.driver = new FirefoxDriver();
     }
 

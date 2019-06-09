@@ -12,7 +12,8 @@ import java.io.File;
 import java.io.IOException;
 import org.habv.automation.configurations.selenium.TestCaseBase;
 
-public class CustomListener implements ITestListener{
+public class CustomListener implements ITestListener {
+
     @Override
     public void onTestStart(ITestResult iTestResult) {
         System.out.println("\t|-- Estamos en el metodo onTestStart");
@@ -26,9 +27,9 @@ public class CustomListener implements ITestListener{
     @Override
     public void onTestFailure(ITestResult iTestResult) {
         System.out.println("\t|-- Estamos en el metodo onTestFailure");
-        WebDriver driver = ((TestCaseBase)(iTestResult.getInstance())).getDriver();
+        WebDriver driver = ((TestCaseBase) (iTestResult.getInstance())).getDriver();
 
-        File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         try {
             FileUtils.copyFile(scrFile, new File(String.format("./src/test/resources/screenshot-%s.png",
                     iTestResult.getMethod().getMethodName())));

@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class ExcelUtility {
+
     private File file;
     protected Workbook book;
 
@@ -19,7 +20,7 @@ public class ExcelUtility {
         try {
             file = new File(path);
             openBook(file);
-        } catch (Exception e) {
+        } catch (Exception ex) {
             throw new RuntimeException("Specified file \"" + path + "\" does not exist");
         }
     }
@@ -110,11 +111,7 @@ public class ExcelUtility {
     }
 
     private boolean existIndex(int sheetNum) {
-        if (book.getSheets().length > sheetNum) {
-            return true;
-        } else {
-            return false;
-        }
+        return book.getSheets().length > sheetNum;
     }
 
     private int getIndexBySheetName(String sheetNameToGetIndex) throws BiffException, IOException {

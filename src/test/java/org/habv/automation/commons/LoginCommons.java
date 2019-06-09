@@ -10,7 +10,6 @@ public class LoginCommons {
         loginPage.fillUserName(userName);
         loginPage.fillPassword(password);
         DashBoardPage dashBoardPage = loginPage.submit();
-        Assert.assertTrue(dashBoardPage.isChangePasswordDisplayed(),
-                "NO se mostro el link para cambio de contrasena");
+        Assert.assertTrue(dashBoardPage.isChangePasswordDisplayed(), "NO se mostro el link para cambio de contrasena");
     }
 }

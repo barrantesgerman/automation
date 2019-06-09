@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BotStyle {
 
-    private WebDriver driver;
+    private final WebDriver driver;
 
     /**
      * Constructor
@@ -22,7 +22,7 @@ public class BotStyle {
      * This method waits for an element to be present
      *
      * @param timeoutInSeconds Time to wait
-     * @param element          The element to wait for
+     * @param element The element to wait for
      * @return
      */
     public WebElement waitForElementPresent(int timeoutInSeconds, final WebElement element) {
@@ -34,8 +34,9 @@ public class BotStyle {
     /**
      * This method waits until an element is clickable
      *
-     * @param element          The element to wait for
+     * @param element The element to wait for
      * @param timeoutInSeconds The maximum time to wait
+     * @return the element
      */
     public WebElement waitForElementClickable(WebElement element, int timeoutInSeconds) {
         WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
@@ -44,10 +45,11 @@ public class BotStyle {
     }
 
     /**
-     * This method wait for a txt element to be present, clear the txt field and send a specified text
+     * This method wait for a txt element to be present, clear the txt field and
+     * send a specified text
      *
      * @param element The txt input web element
-     * @param text    The text to fill the txt element with
+     * @param text The text to fill the txt element with
      */
     public void type(WebElement element, String text) {
         waitForElementPresent(60, element);
@@ -57,9 +59,10 @@ public class BotStyle {
     }
 
     /**
-     * This method wait for an element to be present and click son an specified element
+     * This method wait for an element to be present and click son an specified
+     * element
      *
-     * @param element  Element to click on
+     * @param element Element to click on
      * @param timeOuts The time to wait for element to be present
      */
     public void click(WebElement element, int timeOuts) {
@@ -72,14 +75,17 @@ public class BotStyle {
      * This method checks if an element is displayed or not
      *
      * @param element The element to check its presence
-     * @return <p>True If the element is present</p>
-     * <p>False Otherwise</p>
+     * @return
+     * <p>
+     * True If the element is present</p>
+     * <p>
+     * False Otherwise</p>
      */
     public boolean isElementDisplayed(WebElement element) {
         try {
             element.isDisplayed();
             return true;
-        } catch (Exception e) {
+        } catch (Exception ex) {
             return false;
         }
     }

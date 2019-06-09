@@ -18,7 +18,7 @@ public class LoginPage extends LoginLocators {
         this.passwordElement.sendKeys(password);
     }
 
-    public DashBoardPage submit(){
+    public DashBoardPage submit() {
         this.submitElement.submit();
         return PageFactory.initElements(this.getDriver(), DashBoardPage.class);
     }
