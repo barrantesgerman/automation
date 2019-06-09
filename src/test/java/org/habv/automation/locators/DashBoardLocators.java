@@ -19,4 +19,7 @@ public class DashBoardLocators extends PageObjectBase {
 
     @FindBy(css = "[href='/admin/filer/folder/']")
     protected WebElement foldersLinkElement;
+
+    @FindBy(css = "[href='/admin/auth/user/add/']")
+    protected WebElement addUserLinkElement;
 }

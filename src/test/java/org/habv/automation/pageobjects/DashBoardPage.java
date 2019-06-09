@@ -26,4 +26,9 @@ public class DashBoardPage extends DashBoardLocators {
         this.foldersLinkElement.click();
         return PageFactory.initElements(this.getDriver(), FilerFolderPage.class);
     }
+
+    public AddUserPage addUserLinkClick() {
+        this.addUserLinkElement.click();
+        return PageFactory.initElements(this.getDriver(), AddUserPage.class);
+    }
 }

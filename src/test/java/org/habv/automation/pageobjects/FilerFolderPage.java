@@ -36,8 +36,7 @@ public class FilerFolderPage extends FilerFolderLocators {
                 break;
             }
         }
-        AddFolderPage addFolderPage = PageFactory.initElements(this.getDriver(), AddFolderPage.class);
-        return addFolderPage;
+        return PageFactory.initElements(this.getDriver(), AddFolderPage.class);
     }
 
     public EditFolderPage editFolderClick() {

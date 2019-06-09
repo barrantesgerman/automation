@@ -14,9 +14,15 @@ public class FilerFolderLocators extends PageObjectBase {
     @FindBy(css = "a[href^='/admin/filer/folder/make_folder/?parent_id=']")
     protected WebElement newFolderElement;
 
+    /**
+     * Selector: //table[@id="result_list"]/tbody/tr[@data-folder-name='HERMAN']/td[@class='column-action']/a[@title='Change folder details']
+     */
     @FindBy(css = "a[title='Change folder details']")
     protected WebElement editFolderElement;
 
+    /**
+     * Selector: //table[@id="result_list"]/tbody/tr[@data-folder-name='HERMAN']/td[@class='column-action']/a[@title='Remove folder']
+     */
     @FindBy(css = "a[title='Remove folder']")
     protected WebElement deleteFolderElement;
 

@@ -89,4 +89,26 @@ public class BotStyle {
             return false;
         }
     }
+
+    /**
+     * This method mark as check an element.
+     *
+     * @param element element to check
+     */
+    public void check(WebElement element) {
+        if (!element.isSelected()) {
+            element.click();
+        }
+    }
+
+    /**
+     * This method mark as uncheck an element.
+     *
+     * @param element element to uncheck
+     */
+    public void uncheck(WebElement element) {
+        if (element.isSelected()) {
+            element.click();
+        }
+    }
 }
