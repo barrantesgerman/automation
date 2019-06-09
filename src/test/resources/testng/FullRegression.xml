@@ -13,6 +13,8 @@
     <parameter name="app_admin_url" value="http://127.0.0.1:9000/admin/"/>
     <parameter name="username" value="automation"/>
     <parameter name="password" value="Automation123$"/>
+    <parameter name="new_folder" value="HERMAN"/>
+    <parameter name="edit_folder" value="ALONSO"/>
 
     <!-- TESTS -->
     <test name="full_regression">
@@ -26,6 +28,7 @@
 
         <classes>
             <class name="org.habv.automation.testcases.LoginSuite"></class>
+            <class name="org.habv.automation.testcases.FolderSuite"></class>
         </classes>
     </test>
 </suite>
