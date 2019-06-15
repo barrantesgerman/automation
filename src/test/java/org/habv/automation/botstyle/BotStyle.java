@@ -1,5 +1,6 @@
 package org.habv.automation.botstyle;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -88,6 +89,19 @@ public class BotStyle {
         } catch (Exception ex) {
             return false;
         }
+    }
+
+    public boolean isXPathDisplayed(String xpath, Object... params) {
+        try {
+            findByXPath(xpath, params);
+            return true;
+        } catch (Exception ex) {
+            return false;
+        }
+    }
+
+    public WebElement findByXPath(String xpath, Object... params) {
+        return this.driver.findElement(By.xpath(String.format(xpath, params)));
     }
 
     /**

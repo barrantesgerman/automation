@@ -8,8 +8,6 @@ import org.habv.automation.pageobjects.DeleteFolderPage;
 import org.habv.automation.pageobjects.EditFolderPage;
 import org.habv.automation.pageobjects.FilerFolderPage;
 import org.habv.automation.pageobjects.LoginPage;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.Parameters;
@@ -36,13 +34,12 @@ public class FolderSuite extends TestCaseBase {
         addFolderPage.submit();
         // verificar que se muestra mensaje
         filerFolderPage.updateWindow();
-        WebElement tableRow = getDriver().findElement(By.xpath("//tr[@data-folder-name='" + newFolder + "']"));
-        Assert.assertTrue(tableRow.isDisplayed(), "NO se mostro el Folder: " + newFolder);
+        Assert.assertTrue(filerFolderPage.isFolderRowDisplayed(newFolder), "NO se mostro el Folder: " + newFolder);
     }
 
     @Test(groups = {"full_regression", "folders"}, dependsOnMethods = {"createFolder"})
-    @Parameters({"username", "password", "edit_folder"})
-    public void editFolder(String userName, String password, String editFolder) {
+    @Parameters({"username", "password", "new_folder", "edit_folder"})
+    public void editFolder(String userName, String password, String newFolder, String editFolder) {
         // llenar el formulario de login
         LoginPage loginPage = PageFactory.initElements(this.getDriver(), LoginPage.class);
         LoginCommons.login(loginPage, userName, password);
@@ -53,17 +50,16 @@ public class FolderSuite extends TestCaseBase {
 
         FilerFolderPage filerFolderPage = dashBoardPage.foldersLinkClick();
         // verificar que la navegacion fue exitosa
-        Assert.assertTrue(filerFolderPage.isEditFolderDisplayed(), "NO se mostro el boton de New Folder");
-        EditFolderPage editFolderPage = filerFolderPage.editFolderClick();
+        Assert.assertTrue(filerFolderPage.isEditFolderDisplayed(newFolder), "NO se mostro el boton de edit Folder");
+        EditFolderPage editFolderPage = filerFolderPage.editFolderClick(newFolder);
         editFolderPage.fillFolderName(editFolder);
         editFolderPage.submit();
-        WebElement tableRow = getDriver().findElement(By.xpath("//tr[@data-folder-name='" + editFolder + "']"));
-        Assert.assertTrue(tableRow.isDisplayed(), "NO se mostro el Folder: " + editFolder);
+        Assert.assertTrue(filerFolderPage.isFolderRowDisplayed(editFolder), "NO se mostro el Folder: " + editFolder);
     }
 
     @Test(groups = {"full_regression", "folders"}, dependsOnMethods = {"editFolder"})
-    @Parameters({"username", "password"})
-    public void deleteFolder(String userName, String password) {
+    @Parameters({"username", "password", "edit_folder"})
+    public void deleteFolder(String userName, String password, String editFolder) {
         // llenar el formulario de login
         LoginPage loginPage = PageFactory.initElements(this.getDriver(), LoginPage.class);
         LoginCommons.login(loginPage, userName, password);
@@ -74,10 +70,9 @@ public class FolderSuite extends TestCaseBase {
 
         FilerFolderPage filerFolderPage = dashBoardPage.foldersLinkClick();
         // verificar que la navegacion fue exitosa
-        Assert.assertTrue(filerFolderPage.isDeleteFolderDisplayed(), "NO se mostro el boton de New Folder");
-        DeleteFolderPage deleteFolderPage = filerFolderPage.deleteFolderClick();
+        Assert.assertTrue(filerFolderPage.isDeleteFolderDisplayed(editFolder), "NO se mostro el boton de Delete Folder");
+        DeleteFolderPage deleteFolderPage = filerFolderPage.deleteFolderClick(editFolder);
         deleteFolderPage.submit();
-        WebElement tableRow = getDriver().findElement(By.cssSelector("td[class='no-files']"));
-        Assert.assertTrue(tableRow.isDisplayed(), "NO se mostro el mensaje 'Drop files here or use the \"Upload Files\" button'");
+        Assert.assertFalse(filerFolderPage.isFolderRowDisplayed(editFolder), "SI se mostro el Folder: " + editFolder);
     }
 }

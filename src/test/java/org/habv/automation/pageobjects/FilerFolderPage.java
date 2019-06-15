@@ -16,12 +16,16 @@ public class FilerFolderPage extends FilerFolderLocators {
         return this.getBot().isElementDisplayed(this.newFolderElement);
     }
 
-    public boolean isEditFolderDisplayed() {
-        return this.getBot().isElementDisplayed(this.editFolderElement);
+    public boolean isEditFolderDisplayed(String name) {
+        return this.getBot().isXPathDisplayed(this.editFolderElement, name);
     }
 
-    public boolean isDeleteFolderDisplayed() {
-        return this.getBot().isElementDisplayed(this.deleteFolderElement);
+    public boolean isDeleteFolderDisplayed(String name) {
+        return this.getBot().isXPathDisplayed(this.deleteFolderElement, name);
+    }
+
+    public boolean isFolderRowDisplayed(String name) {
+        return this.getBot().isXPathDisplayed(this.folderRowElement, name);
     }
 
     public void updateWindow() {
@@ -39,13 +43,13 @@ public class FilerFolderPage extends FilerFolderLocators {
         return PageFactory.initElements(this.getDriver(), AddFolderPage.class);
     }
 
-    public EditFolderPage editFolderClick() {
-        this.editFolderElement.click();
+    public EditFolderPage editFolderClick(String name) {
+        this.getBot().findByXPath(this.editFolderElement, name).click();
         return PageFactory.initElements(this.getDriver(), EditFolderPage.class);
     }
 
-    public DeleteFolderPage deleteFolderClick() {
-        this.deleteFolderElement.click();
+    public DeleteFolderPage deleteFolderClick(String name) {
+        this.getBot().findByXPath(this.deleteFolderElement, name).click();
         return PageFactory.initElements(this.getDriver(), DeleteFolderPage.class);
     }
 }

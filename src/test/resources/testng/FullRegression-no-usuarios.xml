@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="Suite1" verbose="1">
+<suite name="Suite5" verbose="1">
 
     <!--LISTENERS-->
     <listeners>
@@ -23,12 +23,12 @@
         <groups>
             <run>
                 <include name="full_regression"/>
+                <exclude name="usuarios"/>
             </run>
         </groups>
 
         <classes>
-            <!--<class name="org.habv.automation.testcases.LoginSuite"></class>-->
-            <!--<class name="org.habv.automation.testcases.UserSuite"></class>-->
+            <class name="org.habv.automation.testcases.UserSuite"></class>
             <class name="org.habv.automation.testcases.FolderSuite"></class>
         </classes>
     </test>
