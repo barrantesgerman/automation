@@ -1,7 +1,5 @@
-package org.habv.automation.testcases;
+package org.habv.automation.commons;
 
-import org.habv.automation.commons.LoginCommons;
-import org.habv.automation.configurations.selenium.TestCaseBase;
 import org.habv.automation.pageobjects.AddUserPage;
 import org.habv.automation.pageobjects.AuthUserPage;
 import org.habv.automation.pageobjects.ChangePasswordPage;
@@ -9,18 +7,12 @@ import org.habv.automation.pageobjects.ChangeUserPage;
 import org.habv.automation.pageobjects.DashBoardPage;
 import org.habv.automation.pageobjects.DeleteUserPage;
 import org.habv.automation.pageobjects.LoginPage;
-import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
 
-public class UserSuite extends TestCaseBase {
+public class UserCommons {
 
-    @Test(groups = {"full_regression", "login"})
-    @Parameters({"username", "password", "new_user", "new_password"})
-    public void createUser(String userName, String password, String newUser, String newPassword) {
+    public static void createUser(LoginPage loginPage, String userName, String password, String newUser, String newPassword) {
         // llenar el formulario de login
-        LoginPage loginPage = PageFactory.initElements(this.getDriver(), LoginPage.class);
         DashBoardPage dashBoardPage = LoginCommons.login(loginPage, userName, password);
 
         Assert.assertTrue(dashBoardPage.isUsersLinkDisplayed(), "NO se mostro el link de Users");
@@ -43,13 +35,10 @@ public class UserSuite extends TestCaseBase {
         authUserPage = changeUserPage.submit();
 
         Assert.assertTrue(authUserPage.isUserLinkDisplayed(newUser), "No se mostro el nuevo usuario");
+        LoginCommons.logout(authUserPage);
     }
 
-    @Test(groups = {"full_regression", "login"}, dependsOnMethods = {"createUser"})
-    @Parameters({"username", "password", "new_user", "change_password"})
-    public void changePassword(String userName, String password, String newUser, String changePassword) {
-        // llenar el formulario de login
-        LoginPage loginPage = PageFactory.initElements(this.getDriver(), LoginPage.class);
+    public static void changePassword(LoginPage loginPage, String userName, String password, String newUser, String changePassword) {
         DashBoardPage dashBoardPage = LoginCommons.login(loginPage, userName, password);
 
         Assert.assertTrue(dashBoardPage.isUsersLinkDisplayed(), "NO se mostro el link de Users");
@@ -70,23 +59,18 @@ public class UserSuite extends TestCaseBase {
         changeUserPage = changePasswordPage.submit();
 
         Assert.assertTrue(changeUserPage.isTitleDisplayed(), "No se mostro el titulo");
+        LoginCommons.logout(changeUserPage);
     }
 
-    @Test(groups = {"full_regression", "login"}, dependsOnMethods = {"changePassword"})
-    @Parameters({"new_user", "change_password"})
-    public void checkUser(String newUser, String changePassword) {
-        // llenar el formulario de login
-        LoginPage loginPage = PageFactory.initElements(this.getDriver(), LoginPage.class);
+    public static void checkUser(LoginPage loginPage, String newUser, String changePassword) {
         DashBoardPage dashBoardPage = LoginCommons.login(loginPage, newUser, changePassword);
 
         Assert.assertTrue(dashBoardPage.isUserNameDisplayed(newUser), "NO se mostro el nombre de usuario");
+        LoginCommons.logout(dashBoardPage);
     }
-
-    @Test(groups = {"full_regression", "login"}, dependsOnMethods = {"checkUser"})
-    @Parameters({"username", "password", "new_user"})
-    public void deleteUser(String userName, String password, String newUser) {
+    
+    public static void deleteUser(LoginPage loginPage, String userName, String password, String newUser) {
         // llenar el formulario de login
-        LoginPage loginPage = PageFactory.initElements(this.getDriver(), LoginPage.class);
         DashBoardPage dashBoardPage = LoginCommons.login(loginPage, userName, password);
 
         Assert.assertTrue(dashBoardPage.isUsersLinkDisplayed(), "NO se mostro el link de Users");
@@ -101,6 +85,6 @@ public class UserSuite extends TestCaseBase {
         DeleteUserPage deleteUserPage = changeUserPage.deleteLinkClick();
         authUserPage = deleteUserPage.submit();
         Assert.assertFalse(authUserPage.isUserLinkDisplayed(newUser), "SI se mostro el link del usuario");
+        LoginCommons.logout(authUserPage);
     }
-
 }
