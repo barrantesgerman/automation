@@ -84,8 +84,7 @@ public class BotStyle {
      */
     public boolean isElementDisplayed(WebElement element) {
         try {
-            element.isDisplayed();
-            return true;
+            return element.isDisplayed();
         } catch (Exception ex) {
             return false;
         }
@@ -93,8 +92,7 @@ public class BotStyle {
 
     public boolean isXPathDisplayed(String xpath, Object... params) {
         try {
-            findByXPath(xpath, params);
-            return true;
+            return findByXPath(xpath, params).isDisplayed();
         } catch (Exception ex) {
             return false;
         }

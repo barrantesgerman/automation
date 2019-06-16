@@ -15,6 +15,9 @@
     <parameter name="password" value="Automation123$"/>
     <parameter name="new_folder" value="HERMAN"/>
     <parameter name="edit_folder" value="ALONSO"/>
+    <parameter name="new_user" value="SELENIUM"/>
+    <parameter name="new_password" value="hellokitty:3"/>
+    <parameter name="change_password" value="t35tn9_$"/>
 
     <!-- TESTS -->
     <test name="full_regression">
@@ -28,8 +31,8 @@
 
         <classes>
             <!--<class name="org.habv.automation.testcases.LoginSuite"></class>-->
-            <!--<class name="org.habv.automation.testcases.UserSuite"></class>-->
-            <class name="org.habv.automation.testcases.FolderSuite"></class>
+            <class name="org.habv.automation.testcases.UserSuite"></class>
+            <!--<class name="org.habv.automation.testcases.FolderSuite"></class>-->
         </classes>
     </test>
 </suite>

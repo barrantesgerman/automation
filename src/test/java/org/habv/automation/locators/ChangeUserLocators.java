@@ -20,6 +20,12 @@ public class ChangeUserLocators extends PageObjectBase {
     @FindBy(id = "id_is_superuser")
     protected WebElement idIsSuperUserElement;
 
+    @FindBy(css = "a[href='../password/']")
+    protected WebElement changePasswordLinkElement;
+
+    @FindBy(className = "deletelink")
+    protected WebElement deleteLinkElement;
+
     @FindBy(css = "input[name='_save']")
     protected WebElement submitElement;
 }

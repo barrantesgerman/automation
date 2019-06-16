@@ -13,13 +13,21 @@ public class DashBoardPage extends DashBoardLocators {
     public boolean isChangePasswordDisplayed() {
         return this.getBot().isElementDisplayed(this.changePasswordElement);
     }
+    
+    public boolean isUserNameDisplayed(String name) {
+        return this.getBot().isXPathDisplayed(this.userNameElement, name);
+    }
 
     public boolean isLogOutDisplayed() {
-        return this.getBot().isElementDisplayed(this.logOutElementElement);
+        return this.getBot().isElementDisplayed(this.logOutElement);
     }
 
     public boolean isFoldersLinkDisplayed() {
         return this.getBot().isElementDisplayed(this.foldersLinkElement);
+    }
+
+    public boolean isUsersLinkDisplayed() {
+        return this.getBot().isElementDisplayed(this.usersLinkElement);
     }
 
     public FilerFolderPage foldersLinkClick() {
@@ -27,8 +35,8 @@ public class DashBoardPage extends DashBoardLocators {
         return PageFactory.initElements(this.getDriver(), FilerFolderPage.class);
     }
 
-    public AddUserPage addUserLinkClick() {
-        this.addUserLinkElement.click();
-        return PageFactory.initElements(this.getDriver(), AddUserPage.class);
+    public AuthUserPage usersLinkClick() {
+        this.usersLinkElement.click();
+        return PageFactory.initElements(this.getDriver(), AuthUserPage.class);
     }
 }
