@@ -15,6 +15,9 @@
     <parameter name="password" value="Automation123$"/>
     <parameter name="new_folder" value="HERMAN"/>
     <parameter name="edit_folder" value="ALONSO"/>
+    <parameter name="new_user" value="SELENIUM"/>
+    <parameter name="new_password" value="dQX6>9y9>kj=k[fB"/>
+    <parameter name="change_password" value="5cy5D;f=@JbfBFsr"/>
 
     <!-- TESTS -->
     <test name="folders">
@@ -27,6 +30,9 @@
         </groups>
 
         <classes>
+            <!--<class name="org.habv.automation.testcases.LoginSuite"></class>-->
+            <!--<class name="org.habv.automation.testcases.UserSuite"></class>-->
+            <class name="org.habv.automation.testcases.UserProviderSuite"></class>
             <class name="org.habv.automation.testcases.FolderSuite"></class>
         </classes>
     </test>

@@ -33,7 +33,7 @@
             <!--<class name="org.habv.automation.testcases.LoginSuite"></class>-->
             <!--<class name="org.habv.automation.testcases.UserSuite"></class>-->
             <class name="org.habv.automation.testcases.UserProviderSuite"></class>
-            <!--<class name="org.habv.automation.testcases.FolderSuite"></class>-->
+            <class name="org.habv.automation.testcases.FolderSuite"></class>
         </classes>
     </test>
 </suite>

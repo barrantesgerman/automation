@@ -62,7 +62,11 @@
                     <!-- Suite testng xml -->
                     <suiteXmlFiles>
                         <suiteXmlFile>src/test/resources/testng/FullRegression.xml</suiteXmlFile>
-                        <!--                        <suiteXmlFile>${testng_xml}</suiteXmlFile>-->
+                        <!--<suiteXmlFile>src/test/resources/testng/Login.xml</suiteXmlFile>-->
+                        <!--<suiteXmlFile>src/test/resources/testng/Usuarios.xml</suiteXmlFile>-->
+                        <!--<suiteXmlFile>src/test/resources/testng/Folders.xml</suiteXmlFile>-->
+                        <!--<suiteXmlFile>src/test/resources/testng/FullRegression-no-usuarios.xml</suiteXmlFile>-->
+                        <!--<suiteXmlFile>${testng_xml}</suiteXmlFile>-->
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
