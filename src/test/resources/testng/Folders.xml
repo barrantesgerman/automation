@@ -6,6 +6,7 @@
     <!--LISTENERS-->
     <listeners>
         <listener class-name="org.habv.automation.configurations.testng.CustomListener" />
+        <listener class-name="org.habv.automation.configurations.testng.StatisticsListener" />
     </listeners>
 
     <!-- GLOBAL PARAMETERS -->

@@ -16,17 +16,17 @@ public class CustomListener implements ITestListener {
 
     @Override
     public void onTestStart(ITestResult iTestResult) {
-        System.out.println("\t|-- Estamos en el metodo onTestStart");
+//        System.out.println("\t|-- Estamos en el metodo onTestStart");
     }
 
     @Override
     public void onTestSuccess(ITestResult iTestResult) {
-        System.out.println("\t|-- Estamos en el metodo onTestSuccess");
+//        System.out.println("\t|-- Estamos en el metodo onTestSuccess");
     }
 
     @Override
     public void onTestFailure(ITestResult iTestResult) {
-        System.out.println("\t|-- Estamos en el metodo onTestFailure");
+//        System.out.println("\t|-- Estamos en el metodo onTestFailure");
         WebDriver driver = ((TestCaseBase) (iTestResult.getInstance())).getDriver();
 
         File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
@@ -40,21 +40,21 @@ public class CustomListener implements ITestListener {
 
     @Override
     public void onTestSkipped(ITestResult iTestResult) {
-        System.out.println("\t|-- Estamos en el metodo onTestSkipped");
+//        System.out.println("\t|-- Estamos en el metodo onTestSkipped");
     }
 
     @Override
     public void onTestFailedButWithinSuccessPercentage(ITestResult iTestResult) {
-        System.out.println("\t|-- Estamos en el metodo onTestFailedButWithinSuccessPercentage");
+//        System.out.println("\t|-- Estamos en el metodo onTestFailedButWithinSuccessPercentage");
     }
 
     @Override
     public void onStart(ITestContext iTestContext) {
-        System.out.println("\t|-- Estamos en el metodo onStart");
+//        System.out.println("\t|-- Estamos en el metodo onStart");
     }
 
     @Override
     public void onFinish(ITestContext iTestContext) {
-        System.out.println("\t|-- Estamos en el metodo onFinish");
+//        System.out.println("\t|-- Estamos en el metodo onFinish");
     }
 }
